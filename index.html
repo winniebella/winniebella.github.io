@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>曹娜娜 · 作品集</title>
+<style>
+  :root{
+    --ink:#191233;        /* 主墨色（带紫调的黑） */
+    --ink-2:#5b5473;      /* 次级文字 */
+    --ink-3:#8b84a3;      /* 弱文字 */
+    --line:#e9e5f4;       /* 分隔线 */
+    --tint:#f7f5fd;       /* 淡紫底 */
+    --accent:#6a35c9;     /* 主紫 */
+    --accent-soft:#efe8ff;
+    --radius:16px;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:#fff;color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+    font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  /* ---------- 顶栏 ---------- */
+  header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;gap:26px;height:68px}
+  .who{font-weight:600;letter-spacing:.01em}
+  .who small{display:block;font-weight:400;font-size:12.5px;color:var(--ink-3);letter-spacing:.06em}
+  nav{margin-left:auto;display:flex;gap:22px;font-size:14.5px;color:var(--ink-2)}
+  nav a:hover{color:var(--accent)}
+  .pill{border:1px solid var(--accent);color:var(--accent);border-radius:999px;
+    padding:7px 15px;font-size:13.5px;white-space:nowrap;opacity:.85;cursor:default}
+
+  /* ---------- 简介 ---------- */
+  .lead{padding:54px 0 12px}
+  .lead h1{margin:0 0 14px;font-size:27px;line-height:1.5;font-weight:600;letter-spacing:.01em;max-width:26em}
+  .lead h1 em{font-style:normal;color:var(--accent)}
+  .lead p{margin:0;color:var(--ink-2);font-size:15.5px;max-width:38em}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+  .chips span{background:var(--tint);color:var(--ink-2);border-radius:999px;padding:6px 13px;font-size:13.5px}
+
+  /* ---------- 分区 ---------- */
+  section{padding:46px 0 8px;scroll-margin-top:84px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;border-top:1px solid var(--line);padding-top:22px}
+  .sec-head .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);align-self:center}
+  .sec-head h2{margin:0;font-size:19px;font-weight:600;letter-spacing:.02em}
+  .sec-head .count{color:var(--ink-3);font-size:13.5px}
+  .sec-head .note{margin-left:auto;color:var(--ink-3);font-size:13.5px;text-align:right}
+
+  /* ---------- 卡片网格 ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(430px,1fr));gap:34px 30px;margin-top:26px}
+  .card{display:flex;flex-direction:column}
+  .cover{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;
+    background:var(--tint);border:1px solid var(--line)}
+  .cover img{width:100%;height:100%;object-fit:cover;display:block}
+  .cover.vert img{object-position:center 32%}
+  .tag{position:absolute;left:12px;top:12px;background:var(--accent);color:#fff;
+    font-size:11.5px;letter-spacing:.06em;padding:5px 10px;border-radius:999px}
+  .tag.ghost{background:rgba(25,18,51,.62)}
+  .cover.pending{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;
+    border:1.5px dashed #cfc4ec;background:var(--tint);color:var(--accent);font-size:14px}
+  .cover.pending b{font-size:26px;font-weight:400;line-height:1}
+
+  .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:rgba(25,18,51,.14);transition:background .25s}
+  .play:hover{background:rgba(25,18,51,.26)}
+  .play i{width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.94);
+    display:flex;align-items:center;justify-content:center;color:var(--accent);
+    font-style:normal;font-size:19px;padding-left:4px;box-shadow:0 6px 18px rgba(25,18,51,.22)}
+
+  .body{padding:15px 2px 0}
+  .title{font-size:16.5px;font-weight:600;letter-spacing:.01em}
+  .line{color:var(--ink-2);font-size:13.5px;margin-top:5px}
+  .line b{color:var(--ink);font-weight:600;border-bottom:1.5px solid var(--accent-soft)}
+  .meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+  .meta span{background:var(--tint);color:var(--ink-3);font-size:12.5px;border-radius:6px;padding:4px 9px}
+  .meta span.todo{background:#fff;color:#b9a9e0;border:1px dashed #d8cdf0}
+  .more{margin-top:12px;background:none;border:0;padding:0;color:var(--accent);
+    font-size:13.5px;cursor:pointer;font-family:inherit}
+  .more:hover{text-decoration:underline}
+
+  /* ---------- 详情展开 ---------- */
+  .detail{display:none;margin-top:16px;padding:18px;background:var(--tint);border-radius:14px;
+    border:1px solid var(--line)}
+  .detail.open{display:block}
+  .detail p{margin:0 0 12px;font-size:14.5px;color:var(--ink-2)}
+  .detail video{width:100%;border-radius:10px;background:#000;display:block}
+  .stills{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
+  .stills img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:8px;display:block}
+  .detail .hint{font-size:12.5px;color:var(--ink-3);margin:10px 0 0}
+
+  /* ---------- 纪录片图片组 ---------- */
+  .group{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}
+  .group figure{margin:0}
+  .group img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:12px;display:block;
+    border:1px solid var(--line)}
+  .group figcaption{font-size:12.5px;color:var(--ink-3);margin-top:8px}
+  .badge{display:inline-block;margin-top:12px;background:#fbf7ff;border:1px solid #e2d7f7;
+    color:var(--accent);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;letter-spacing:.01em}
+
+  /* ---------- 照片分区 ---------- */
+  .sub{margin-top:30px;font-size:13.5px;letter-spacing:.2em;color:var(--accent);font-weight:600}
+  .sub::after{content:"";display:block;height:1px;background:var(--line);margin-top:10px}
+  .photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:22px;margin-top:18px}
+  .photos.one{grid-template-columns:minmax(0,560px)}
+  .photos figure{margin:0}
+  .photos img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;display:block;
+    border:1px solid var(--line)}
+  .photos figcaption{margin-top:9px;font-size:12.5px;color:var(--ink-3)}
+  .photos .fill{border-bottom:1px dashed #cfc4ec;color:#b9a9e0}
+  .photos figure.ph{aspect-ratio:3/2;border:1.5px dashed #cfc4ec;border-radius:12px;
+    background:var(--tint);display:flex;align-items:center;justify-content:center;
+    color:var(--accent);font-size:13.5px}
+
+  footer{margin-top:64px;border-top:1px solid var(--line);padding:28px 0 60px;
+    color:var(--ink-3);font-size:13.5px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+  footer .fill{border-bottom:1px dashed #cfc4ec;color:#b9a9e0}
+
+  @media (max-width:720px){
+    .wrap{padding:0 18px}
+    .bar{height:auto;padding:12px 0;flex-wrap:wrap;gap:12px}
+    nav{width:100%;order:3;gap:16px;font-size:13.5px;overflow-x:auto}
+    .lead{padding:34px 0 6px}
+    .lead h1{font-size:21px}
+    .grid{grid-template-columns:1fr;gap:26px}
+    .group{grid-template-columns:1fr 1fr}
+    .photos{grid-template-columns:1fr}
+    .group{grid-template-columns:1fr 1fr}
+    .sec-head .note{display:none}
+    .stills{grid-template-columns:1fr 1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="who">曹娜娜<small>广播电视编导 · 四川大学艺术学院 · 2025级</small></div>
+    <nav>
+      <a href="#ai">AI 视频集</a>
+      <a href="#edit">剪辑 · 动作</a>
+      <a href="#doc">纪录片</a>
+      <a href="#photo">照片</a>
+    </nav>
+    <span class="pill">沉浸版 · 建设中</span>
+  </div>
+</header>
+
+<div class="wrap lead">
+  <h1>用 AI 生成素材、实拍与剪辑合成影像内容——<em>科研材料，专业学习与课外实践的作品呈现</em>。</h1>
+  <p>以下按视频类型分类。打开即可浏览全部作品，视频点击播放（默认无声）。每件作品都标注了我在其中承担的具体职务。</p>
+  <div class="chips">
+    <span>AI 生成素材</span><span>拍摄 · 剪辑 · 合成</span><span>调色</span><span>照片集</span><span>科研宣发</span>
+  </div>
+</div>
+
+<!-- ========== AI 视频集 ========== -->
+<section id="ai">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="dot"></span><h2>AI 视频集</h2><span class="count">4 项</span>
+      <span class="note">AI 生成 + 实拍合成 · 含实验刺激材料</span>
+    </div>
+    <div class="grid">
+
+      <article class="card">
+        <div class="cover pending"><b>+</b><span>待制作 · ① 讲师形象对照材料</span></div>
+        <div class="body">
+          <div class="title">实验刺激材料 · 讲师形象对照（两版）</div>
+          <div class="line">同一段讲课内容，两版<strong>只改「形象」一个变量</strong>：台词、机位、时长、灯光、背景、音量全部保持一致。</div>
+          <div class="meta"><span>实验材料</span><span>60 秒 ×2 版</span><span class="todo">职务待补</span><span class="todo">年份待补</span></div>
+          <button class="more" type="button">看详情 ▾</button>
+          <div class="detail">
+            <p>为眼动与脑电实验准备的对照材料：被试观看两版讲课视频，除“讲师形象”外一切变量受控，才能把生理数据的变化归因到形象本身。这是本岗位要求的核心能力。</p>
+            <p class="hint">交付物：两版成片 + 一份变量控制清单（逐项说明哪些保持一致）。</p>
+            <p class="hint">AI 来源：生图工具 待补 · 生视频工具 待补 · 操作路径 待补</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="cover pending"><b>+</b><span>待制作 · ② 刺激材料规范包</span></div>
+        <div class="body">
+          <div class="title">实验刺激材料 · 规范化图片组</div>
+          <div class="line">一组规格完全统一的静态刺激图片，配一份材料规范说明。</div>
+          <div class="meta"><span>实验材料</span><span>图片组</span><span class="todo">职务待补</span><span class="todo">年份待补</span></div>
+          <button class="more" type="button">看详情 ▾</button>
+          <div class="detail">
+            <p>统一尺寸、统一人脸大小、统一背景与亮度，保证每张材料的呈现条件相同；另附规范说明文档，写明尺寸／色彩空间／文件名规则。</p>
+            <p class="hint">交付物：规范图片组 + 规范说明（可复用给团队其他材料）。</p>
+            <p class="hint">AI 来源：生图工具 待补 · 生视频工具 待补 · 操作路径 待补</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="cover vert">
+          <img src="assets/ai-ad.jpg" alt="AI 公益广告画面">
+          <span class="tag ghost">竖屏</span>
+          <span class="play" role="button" tabindex="0" aria-label="播放 AI 公益广告"><i>▶</i></span>
+        </div>
+        <div class="body">
+          <div class="title">AI 公益广告（优化版）</div>
+          <div class="line">用 AI 生成素材完成的第一支公益广告，现做分镜与声音的优化。</div>
+          <div class="meta"><span>公益广告</span><span>41 秒</span><span>竖屏</span><span class="todo">职务待补</span><span class="todo">AI 来源待补</span></div>
+          <button class="more" type="button">看详情 ▾</button>
+          <div class="detail">
+            <p>优化方向：分镜重构、台词节奏、声音设计；保留原片“祖孙对话”的情绪线。AI 负责生成场景与辅助素材，实拍部分与合成部分由我完成。</p>
+            <video controls preload="none" poster="assets/ai-ad.jpg" src="assets/ai-ad.mp4"></video>
+            <p class="hint">此处为该片压缩版（720p，含声音）。正式版将替换为 15–30 秒片花 + 剧情截图。</p>
+            <p class="hint">AI 来源：生图工具 待补 · 生视频工具 待补 · 操作路径 待补</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="cover pending"><b>+</b><span>待制作 · ③ 油画变活 · 轨道穿梭</span></div>
+        <div class="body">
+          <div class="title">油画变活 · 动态轨道穿梭</div>
+          <div class="line">静态油画生成动态画面，并用摄像机轨道在画面内穿梭。</div>
+          <div class="meta"><span>AI 生成</span><span class="todo">时长待补</span><span class="todo">职务待补</span><span class="todo">AI 来源待补</span></div>
+          <button class="more" type="button">看详情 ▾</button>
+          <div class="detail">
+            <p>技术路线：图生视频 + 摄像机路径动画（后期合成轨道运动），用于展示对 AI 生成结果的控制力，而不是“一键生成”。</p>
+            <p class="hint">规划中，待制作。</p>
+            <p class="hint">AI 来源：生图工具 待补 · 生视频工具 待补 · 操作路径 待补</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== 剪辑 · 动作 ========== -->
+<section id="edit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="dot"></span><h2>剪辑 · 动作</h2><span class="count">2 项</span>
+      <span class="note">叙事穿插 · 动作节奏</span>
+    </div>
+    <div class="grid">
+
+      <article class="card">
+        <div class="cover">
+          <img src="assets/he-01.jpg" alt="叙述穿插并列镜头练习画面">
+          <span class="tag ghost">拉片练习</span>
+          <span class="play" role="button" tabindex="0" aria-label="播放叙述穿插并列镜头练习"><i>▶</i></span>
+        </div>
+        <div class="body">
+          <div class="title">叙述穿插并列镜头练习</div>
+          <div class="line">两条叙事线交替穿插推进，用并列镜头交代对照关系——练习多线叙事的信息分配与切点控制。</div>
+          <div class="meta"><span>剪辑练习</span><span>2 分 50 秒</span><span>剪辑师</span><span>素材来源：网络</span></div>
+          <button class="more" type="button">看详情 ▾</button>
+          <div class="detail">
+            <p>训练重点：① 两条叙事线交替穿插时，信息先给谁、晚给谁；② 并列镜头之间的切点位置与停留时长，决定观众注意力在两侧之间如何转移；③ 同一组素材剪出两种节奏，对照观感差异。这与对照实验材料的思路相通。</p>
+            <video controls preload="none" poster="assets/he-01.jpg" src="assets/xg-01.mp4"></video>
+            <p class="hint">此处为该片压缩版（720p，含声音）。素材来源于网络，仅作剪辑练习。</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="cover">
+          <img src="assets/mb-01.jpg" alt="《目标》动作镜头画面">
+          <span class="tag ghost">动作剪辑</span>
+          <span class="play" role="button" tabindex="0" aria-label="播放《目标》"><i>▶</i></span>
+        </div>
+        <div class="body">
+          <div class="title">《目标》· 动作镜头</div>
+          <div class="line">动作段落的镜头组接：把不同景别、不同机位的动作素材剪成连贯的一次行动。</div>
+          <div class="meta"><span>剪辑 · 动作</span><span>1 分 40 秒</span><span>剪辑师</span><span>素材来源：网络</span></div>
+          <button class="more" type="button">看详情 ▾</button>
+          <div class="detail">
+            <p>训练重点：① 动作段落的切点选择——让动作不断、力量不泄；② 全／中／近景的组接顺序与节奏推进；③ 用镜头长短的交替控制紧张感，而不是靠加快切换堆刺激。</p>
+            <video controls preload="none" poster="assets/mb-01.jpg" src="assets/mb-01.mp4"></video>
+            <p class="hint">此处为该片压缩版（720p，含声音）。素材来源于网络，仅作剪辑练习。</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== 纪录片 ========== -->
+<section id="doc">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="dot"></span><h2>纪录片</h2><span class="count">1 项</span>
+      <span class="note">以图片组呈现 · 不在此页播放原片</span>
+    </div>
+
+    <article class="card" style="margin-top:26px">
+      <div class="title" style="font-size:17.5px">汶川韧迹 · 2026 暑期实践</div>
+      <div class="line" style="max-width:44em">映秀镇的纪念空间与重生日常。10 分钟长片，4K 航拍与实地拍摄。此页以图片组呈现。</div>
+      <div class="badge">★ 该片被「青春川大」官方选中投送</div>
+      <div class="meta"><span>纪录片</span><span>10 分钟</span><span>4K</span><span>剪辑师</span><span>2026 年 7 月</span><span>素材来源：实拍 + 航拍</span></div>
+      <div class="group">
+        <figure><img src="assets/wc-01.jpg" alt="汶川韧迹 剧照 01"><figcaption>剧照 01</figcaption></figure>
+        <figure><img src="assets/wc-02.jpg" alt="汶川韧迹 剧照 02"><figcaption>剧照 02</figcaption></figure>
+        <figure><img src="assets/wc-03.jpg" alt="汶川韧迹 剧照 03"><figcaption>剧照 03</figcaption></figure>
+        <figure><img src="assets/wc-04.jpg" alt="汶川韧迹 剧照 04"><figcaption>剧照 04</figcaption></figure>
+        <figure><img src="assets/wc-05.jpg" alt="汶川韧迹 剧照 05"><figcaption>剧照 05</figcaption></figure>
+        <figure><img src="assets/wc-06.jpg" alt="汶川韧迹 剧照 06"><figcaption>剧照 06</figcaption></figure>
+        <figure><img src="assets/wc-07.jpg" alt="汶川韧迹 剧照 07"><figcaption>剧照 07</figcaption></figure>
+        <figure><img src="assets/wc-08.jpg" alt="汶川韧迹 剧照 08"><figcaption>剧照 08</figcaption></figure>
+      </div>
+      <button class="more" type="button">看详情 ▾</button>
+      <div class="detail">
+        <p>该片被「青春川大」官方选中投送，作为 2026 年暑期社会实践成果对外呈现。</p>
+        <p>全片不在此页播放，避免大文件影响浏览；如需观看完整版本，请通过下方联系方式索取链接。</p>
+        <p class="hint">同一项目另有三个剪法版本，可作为“同一素材·不同剪法”的过程记录。</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ========== 照片 · 摄影 ========== -->
+<section id="photo">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="dot"></span><h2>照片 · 摄影</h2><span class="count">4 张</span>
+      <span class="note">人文 · 自然 · 持续补充</span>
+    </div>
+
+    <div class="sub">人文</div>
+    <div class="photos">
+      <figure><img src="assets/rw-01.jpg" alt="人文 01"><figcaption>人文 01</figcaption></figure>
+      <figure><img src="assets/rw-02.jpg" alt="人文 02"><figcaption>人文 02</figcaption></figure>
+    </div>
+
+    <div class="sub">自然</div>
+    <div class="photos">
+      <figure><img src="assets/nz-01.jpg" alt="自然 01"><figcaption>自然 01</figcaption></figure>
+      <figure><img src="assets/nz-02.jpg" alt="自然 02"><figcaption>自然 02</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>联系方式：邮箱 <span class="fill">待补</span></span>
+  <span>电话 <span class="fill">待补</span></span>
+  <span style="margin-left:auto">沉浸版（3D 入口）· 建设中</span>
+</footer>
+
+<script>
+  // 详情展开 / 收起
+  document.querySelectorAll('.more').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var panel = btn.nextElementSibling;
+      var open = panel.classList.toggle('open');
+      btn.textContent = open ? '收起 ▴' : '看详情 ▾';
+    });
+  });
+
+  // 点封面 = 打开详情并播放（如果里面有 video）
+  document.querySelectorAll('.card').forEach(function(card){
+    var trigger = card.querySelector('.play');
+    if(!trigger) return;
+    function go(){
+      var panel = card.querySelector('.detail');
+      var btn = card.querySelector('.more');
+      if(!panel.classList.contains('open')){
+        panel.classList.add('open');
+        if(btn) btn.textContent = '收起 ▴';
+      }
+      var v = panel.querySelector('video');
+      if(v){ v.scrollIntoView({block:'center',behavior:'smooth'}); v.play().catch(function(){}); }
+    }
+    trigger.addEventListener('click', go);
+    trigger.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();go();} });
+  });
+
+  // 滚动时高亮当前分区
+  var navLinks = Array.from(document.querySelectorAll('nav a'));
+  var secs = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY + 120, cur = -1;
+    secs.forEach(function(s,i){ if(s && s.offsetTop <= y) cur = i; });
+    navLinks.forEach(function(a,i){ a.style.color = (i===cur) ? 'var(--accent)' : ''; });
+  }, {passive:true});
+</script>
+</body>
+</html>
