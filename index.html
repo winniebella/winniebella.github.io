@@ -98,7 +98,9 @@
 
   /* ---------- AI 创作 ---------- */
   .subnote{font-size:13.5px;color:var(--ink-3);margin:12px 0 0;max-width:46em}
-  .cover.poster{aspect-ratio:3/4}
+  .cover.plate{aspect-ratio:1/1}
+  .cover.plate img{object-fit:contain}
+  .grid.pair{grid-template-columns:repeat(2,1fr)}
   .duo{display:grid;grid-template-columns:1.3fr 1fr;gap:10px;margin:16px 0 4px}
   .duo figure{margin:0}
   .duo img{width:100%;border-radius:10px;display:block;border:1px solid var(--line)}
@@ -145,6 +147,7 @@
     .lead{padding:34px 0 6px}
     .lead h1{font-size:21px}
     .grid{grid-template-columns:1fr;gap:26px}
+    .grid.pair{grid-template-columns:1fr}
     .group{grid-template-columns:1fr 1fr}
     .photos{grid-template-columns:1fr}
     .group{grid-template-columns:1fr 1fr}
@@ -343,7 +346,7 @@
 <section id="photo">
   <div class="wrap">
     <div class="sec-head">
-      <span class="dot"></span><h2>照片 · 摄影</h2><span class="count">4 张 · AI 创作 1 件</span>
+      <span class="dot"></span><h2>照片 · 摄影</h2><span class="count">4 张 · AI 创作 2 件</span>
       <span class="note">人文 · 自然 · AI 创作 · 持续补充</span>
     </div>
 
@@ -362,9 +365,9 @@
     <div class="sub">AI 创作</div>
     <p class="subnote">以下为 AI 生成作品，单独成组，与上方实拍摄影分开标注。每件都写明使用的平台、模型与完整提示词；参考素材均为本人实拍。</p>
 
-    <div class="grid" style="grid-template-columns:minmax(0,620px);margin-top:20px">
+    <div class="grid pair" style="margin-top:20px">
       <article class="card">
-        <div class="cover poster">
+        <div class="cover plate">
           <img src="assets/sanxiang-01.jpg" alt="《三像回响》AI 海报">
           <span class="tag">AI 创作</span>
         </div>
@@ -402,6 +405,33 @@
 【禁止】新增人物、动物、道具、云气、光斑；上半区被插画风格污染；主体变形或比例失真；任何水印与标识。</pre>
             </div>
             <p class="hint">AI 来源：平台 RunningHub · 模型「全能图片G2-官方稳定版」· 画幅 3:4 · 单张成本 1.13 元。参考素材为本人实拍照片，创意构思与提示词撰写由本人完成。</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="cover plate">
+          <img src="assets/character-01.jpg" alt="19 世纪欧洲女性角色三视图">
+          <span class="tag">AI 创作</span>
+        </div>
+        <div class="body">
+          <div class="title">人物资产 · 19 世纪欧洲女性三视图</div>
+          <div class="line">一张可以复用的角色标准件：正面、右后四分之三侧面、正背面并列，从发式到刺绣一次定死。</div>
+          <div class="meta">
+            <span>AI 角色设定</span><span>3:2 横版</span><span>创意 · 提示词：本人</span>
+            <span>平台：RunningHub</span><span>模型：全能图片G2.5-高品质低价版</span><span>2026 年 9 月</span>
+          </div>
+          <button class="more" type="button">看详情 ▾</button>
+          <div class="detail">
+            <p><strong>创作想法。</strong>做一张能复用的角色标准件。用三视图把同一个角色的正面、侧面、背面一次定死——发式、冠冕、珍珠首饰、刺绣纹样、裙型全部交代清楚，以后画分镜、出别的画面都照这张走，脸和衣服不会每张都不一样。同时借 19 世纪欧洲贵族女性的服饰做考据，把冷暖关系定成整套视觉的基准：冷灰底子，暗紫罗兰做主色，暖金只落在刺绣与首饰上。</p>
+            <p><strong>三视图为什么要这么排。</strong>正面居中占视觉主轴，左右各留约四分之一幅面给右后侧四分之三侧面与正背面；三者地平线严格对齐、之间留等宽空白带——这样一眼能看出「这是同一个人」，而不是三张不同的图。构图还写死了：全景平视、标准焦距、无限大景深，保证从全身到发丝全程清晰，不留虚焦。</p>
+            <p><strong>材质和光也一并写进提示词。</strong>真丝的柔滑垂坠与微弱光泽、哑光金丝刺绣滚边、珍珠的温润晕彩与玻璃态高光、铂金冠冕的线性亮斑，每一样单独交代；光则按影棚三点布光的逻辑写：正面偏左上的高色温柔光箱打面，右侧低角度冷光勾轮廓，正后方高位背光把金发与裙摆从灰底上分离出来。阴影定为极浅蓝灰、边缘全柔，情绪基调要「客观、精准、沉静」。</p>
+            <p><strong>怎么做的。</strong>在 RunningHub 上用「全能图片G2.5-高品质低价版」出图，横版 3:2。提示词由本人撰写，按「内容描述 / 环境 / 风格 / 光影氛围 / 构图镜头」五段结构，把角色、服装、首饰、背景、材质、布光、镜头全部写成明确约束，力求达到工业级角色原画参考图的可用标准。</p>
+            <div class="promptbox">
+              <div class="pb-head">完整提示词</div>
+              <pre>【内容描述】，一位欧洲贵族年轻女性呈标准三视图并列排布，正面视角中她双肩平直站立，重心均匀分布，面部轮廓柔和，五官精致，湛蓝眼眸直视前方，神情平静克制，脸颊点缀稀疏浅褐色雀斑，细腻毛孔与微小血管清晰可见，左侧为右后侧四分之三侧面，头部微转突出下颌线条与颈部弧度，右侧为正背面视角，长发自然垂落肩胛骨，她拥有高颧骨与挺直的鼻梁，肤色呈冷白调，金色波浪卷发以轻柔的S型卷曲披散于背部，额前与鬓角预留几缕碎发修饰脸型，其余头发在颅顶后方用丝带半束固定，身着高腰线帝国剪裁长裙，裙身主体呈现深邃的暗紫罗兰色，胸前与袖口拼接哑光金丝刺绣滚边，面料具有真丝特有的柔滑垂坠感与微弱光泽，颈间佩戴三层渐缩的圆润白色珍珠项链，耳垂悬挂单颗水滴形珍珠耳坠，手腕套着纤细的珍珠手链，头顶佩戴一顶宽版铂金底座镶嵌大粒南洋珍珠与镂空古法黄金叶脉纹样的半环冠冕，整体姿态端庄静止，双手自然交叠置于腰际正前方，指尖放松，无多余肢体动作；【环境】，画面背景为纯中性浅灰调无缝摄影棚纸墙，无任何杂物与装饰，地面呈同一浅灰色并带有极轻微的镜面反光以承接脚部投影，三组人物模型之间保留等宽的留白间隔带，用于明确区分不同视角的空间边界，空气中悬浮极细密的漫射微尘，增强空间纵深感而不干扰主体轮廓；【风格】，高精度数字绘画结合超写实摄影质感，采用严谨的人体解剖比例与对称化角色设定稿排版，背景处理为绝对干净的平面留白，材质表现强调织物的经纬肌理，金属的拉丝抛光痕迹，珍珠的温润晕彩与玻璃态高光，画面整体保持锐利边缘与局部肤质微距级清晰度，色调以低饱和冷灰为主基底，搭配暗紫罗兰与暖金作为视觉聚焦色块，饱和度控制在中等偏低水平以凸显材质本真，后期去除所有噪点与色彩偏移，呈现工业级角色原画参考图标准；【光影氛围】，采用专业影棚三点布光系统，主光源来自正前方略偏左上方的高色温柔光箱，大面积漫射覆盖面部与躯干，消除生硬阴影以保障三视图结构识别度，辅光从右侧低角度补入冷色调环境反射光以勾勒轮廓边缘，背光从正后方高位打入形成细微的轮廓分离光晕使金发与裙摆脱离背景，阴影呈现极浅的蓝灰色调且边缘完全过渡柔和，珍珠表面分布均匀的椭圆形柔和高光点，金属头冠折射出清晰的线性亮斑，整体光线冷静均匀，情绪基调客观，精准，沉静；【构图镜头】，采用全景平视视角与标准焦距镜头透视，画面严格遵循横向三分法布局，正面图居中占据视觉主轴，左右两侧各四分之一幅面分别容纳侧面与背面视角，三者高度严格对齐地平线，主体占据画面垂直高度的大部分区域，前景无任何遮挡物，景深设定为无限远大景深确保全身至发丝细节全程清晰，构图保持绝对的水平与垂直稳定，视觉重心沿中心轴线均匀分布，视线引导路径为从左至右依次扫描三个视角的头部特征，最终收束于面部五官细节。</pre>
+            </div>
+            <p class="hint">AI 来源：平台 RunningHub · 模型「全能图片G2.5-高品质低价版」· 画幅 3:2。创意构思与提示词撰写由本人完成。</p>
           </div>
         </div>
       </article>
