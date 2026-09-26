@@ -94,6 +94,22 @@
   .stills{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
   .stills img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:8px;display:block}
   .detail .hint{font-size:12.5px;color:var(--ink-3);margin:10px 0 0}
+  .detail p strong{color:var(--ink);font-weight:600}
+
+  /* ---------- AI 创作 ---------- */
+  .subnote{font-size:13.5px;color:var(--ink-3);margin:12px 0 0;max-width:46em}
+  .cover.poster{aspect-ratio:3/4}
+  .duo{display:grid;grid-template-columns:1.3fr 1fr;gap:10px;margin:16px 0 4px}
+  .duo figure{margin:0}
+  .duo img{width:100%;border-radius:10px;display:block;border:1px solid var(--line)}
+  .duo figcaption{margin-top:7px;font-size:12.5px;color:var(--ink-3)}
+  .promptbox{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .promptbox .pb-head{font-size:12.5px;letter-spacing:.12em;color:var(--accent);font-weight:600;
+    padding:11px 15px;border-bottom:1px solid var(--line);background:#fbfaff}
+  .promptbox pre{margin:0;padding:15px;font-size:12.5px;line-height:1.9;color:var(--ink-2);
+    font-family:"PingFang SC","Hiragino Sans GB",system-ui,sans-serif;
+    white-space:pre-wrap;word-break:break-word;max-height:330px;overflow-y:auto}
+  @media (max-width:720px){ .duo{grid-template-columns:1fr} }
 
   /* ---------- 纪录片图片组 ---------- */
   .group{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}
@@ -327,8 +343,8 @@
 <section id="photo">
   <div class="wrap">
     <div class="sec-head">
-      <span class="dot"></span><h2>照片 · 摄影</h2><span class="count">4 张</span>
-      <span class="note">人文 · 自然 · 持续补充</span>
+      <span class="dot"></span><h2>照片 · 摄影</h2><span class="count">4 张 · AI 创作 1 件</span>
+      <span class="note">人文 · 自然 · AI 创作 · 持续补充</span>
     </div>
 
     <div class="sub">人文</div>
@@ -341,6 +357,54 @@
     <div class="photos">
       <figure><img src="assets/nz-01.jpg" alt="自然 01"><figcaption>自然 01</figcaption></figure>
       <figure><img src="assets/nz-02.jpg" alt="自然 02"><figcaption>自然 02</figcaption></figure>
+    </div>
+
+    <div class="sub">AI 创作</div>
+    <p class="subnote">以下为 AI 生成作品，单独成组，与上方实拍摄影分开标注。每件都写明使用的平台、模型与完整提示词；参考素材均为本人实拍。</p>
+
+    <div class="grid" style="grid-template-columns:minmax(0,620px);margin-top:20px">
+      <article class="card">
+        <div class="cover poster">
+          <img src="assets/sanxiang-01.jpg" alt="《三像回响》AI 海报">
+          <span class="tag">AI 创作</span>
+        </div>
+        <div class="body">
+          <div class="title">三像回响 · 文物摄影再设计</div>
+          <div class="line">以本人实拍的博物馆青铜跪坐人像为参考，把「展陈实物」与「版画回响」并置成一张竖版海报。</div>
+          <div class="meta">
+            <span>AI 海报</span><span>3:4 竖版</span><span>创意 · 提示词 · 参考拍摄：本人</span>
+            <span>平台：RunningHub</span><span>模型：全能图片G2-官方稳定版</span><span>2026 年 9 月</span>
+          </div>
+          <button class="more" type="button">看详情 ▾</button>
+          <div class="detail">
+            <p><strong>创作想法。</strong>先把三尊造像从展柜的黑暗里请出来——上半区保留实拍的质感与聚光，让实物站住；下半区只留一个由中心向左右扩散的动势，把「回响」画成看得见的墨线。上实下虚、上静下动，一张纸上同时放一个文物和一个抽象概念。</p>
+            <p><strong>三个设计决定。</strong>① 严格上下双区等分，以一条清晰水平线为界，全画仍是一张连贯的平面设计，不做拼贴感；② 只允许一种动势——横向扩散，不叠加旋涡、爆炸或烟雾，避免视觉打架；③ 全画不超过三色：从青铜器上取的青铜绿作唯一强调色，其余是少量墨黑与象牙纸白，颜色为平涂油墨质感。</p>
+            <p><strong>文字也当版式元素。</strong>主标题「三像回响」大号、明显拉开字距、沿下半区扩散轴居中；另设四组极小注释（青铜绿 / 由核心扩散 / 墨线回响 / NO.03）沿纸缘与墨线稀疏排布。同时在提示词里写死禁止项：不出现地名、拍摄日期、经纬度、博物馆名，不加任何水印与标识。</p>
+            <p><strong>怎么做的。</strong>以自己的实拍照片作参考图，在 RunningHub 上用「全能图片G2-官方稳定版」出图，画幅 3:4；提示词由本人逐条撰写，把版式、动势、配色、油墨质感、文字和禁止项全部写成明确约束，把不确定性压到最低。</p>
+            <div class="duo">
+              <figure><img src="assets/sanxiang-ref.jpg" alt="参考原片：三尊青铜跪坐人像"><figcaption>参考原片 · 本人实拍（DSC00471）</figcaption></figure>
+              <figure><img src="assets/sanxiang-canvas.jpg" alt="RunningHub 画布与提示词"><figcaption>RunningHub 画布与完整提示词</figcaption></figure>
+            </div>
+            <div class="promptbox">
+              <div class="pb-head">完整提示词</div>
+              <pre>竖版3:4艺术海报，严格上下双区等分，以清晰水平线为界，整体是一张连贯平面设计。
+
+【上半区·真实照片】基于参考照片，完整保留三尊古代青铜跪坐人像的外观、数量、姿态与空间关系：中央一尊正面、最高、最清晰，左右两尊略低、略虚，三像皆呈跪坐姿态、双手置于腰腹，头饰与招风耳轮廓清晰。保留青铜绿锈质感（verdigris patina）、纯黑展陈背景与顶部聚光灯照明氛围，仅做适度影调与色彩微调。原照片为横构图：完整保留三尊造像不被裁切，用与原图一致的纯黑色自然延展、填满上半区，黑色延展中不出现任何新元素；造像不得拉伸、扭曲，不换面、不换材质、不改动作，不用生成天空或地面替换原背景。
+
+【下半区·单一动势版画】象牙白暖调自然纸色背景，大块留白。以中央跪坐人像提炼出的极简轮廓剪影作为小幅视觉锚点，置于下半区中轴线上；主导运动只有一种——由核心向左右两侧水平扩散的回响：以断裂、断续的水平细线和粗糙墨点构成扩散轨迹，靠近核心线条更密、颗粒更深，向左右边缘逐渐稀疏、破碎、消失在留白中；左右远端各有一两个极小的轮廓残点，隐约呼应另两尊造像，但不出现完整的第二、第三人像。不同时叠加旋涡、爆炸、烟雾或速度线。
+
+【配色】从上部青铜器提取青铜绿色作为唯一强调色，仅用于核心小轮廓与少量短线；其余墨线与文字为少量黑色；纸面为暖白象牙色。全画总计不超过三色，颜色为平涂油墨质感，禁止光滑数码渐变。
+
+【纸张与油墨】丝网印刷、Risograph 质感：粗糙网点、可见纸纤维、轻微油墨覆盖不均、轻微套印偏差，近核心颗粒更密；禁止光滑矢量、CG感、3D浮雕、荧光色、统一噪点滤镜。
+
+【文字】主标题为“三像回响”四个汉字，大号、明显拉开字距，沿下半区水平扩散轴居中排列；另设四组极小注释：“青铜绿”“由核心扩散”“墨线回响”“NO.03”，用小号黑色汉字或数字沿纸缘与墨线稀疏分布。不出现真实地名、拍摄日期、经纬度、博物馆名或身份说明。
+
+【禁止】新增人物、动物、道具、云气、光斑；上半区被插画风格污染；主体变形或比例失真；任何水印与标识。</pre>
+            </div>
+            <p class="hint">AI 来源：平台 RunningHub · 模型「全能图片G2-官方稳定版」· 画幅 3:4 · 单张成本 1.13 元。参考素材为本人实拍照片，创意构思与提示词撰写由本人完成。</p>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
