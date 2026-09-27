@@ -60,6 +60,7 @@
     background:var(--tint);border:1px solid var(--line)}
   .cover img{width:100%;height:100%;object-fit:cover;display:block}
   .cover.vert img{object-position:center 32%}
+  .cover.vert.top img{object-position:center 8%}
   .tag{position:absolute;left:12px;top:12px;background:var(--accent);color:#fff;
     font-size:11.5px;letter-spacing:.06em;padding:5px 10px;border-radius:999px}
   .tag.ghost{background:rgba(25,18,51,.62)}
@@ -102,6 +103,7 @@
   .cover.plate img{object-fit:contain}
   .grid.pair{grid-template-columns:repeat(2,1fr)}
   .duo{display:grid;grid-template-columns:1.3fr 1fr;gap:10px;margin:16px 0 4px}
+  .duo.single{grid-template-columns:1fr}
   .duo figure{margin:0}
   .duo img{width:100%;border-radius:10px;display:block;border:1px solid var(--line)}
   .duo figcaption{margin-top:7px;font-size:12.5px;color:var(--ink-3)}
@@ -190,16 +192,29 @@
     <div class="grid">
 
       <article class="card">
-        <div class="cover pending"><b>+</b><span>待制作 · ① 讲师形象对照材料</span></div>
+        <div class="cover vert top">
+          <img src="assets/jiangshi-01.jpg" alt="实验刺激材料 · 讲师形象对照（两版）">
+          <span class="tag ghost">竖屏</span>
+          <span class="play" role="button" tabindex="0" aria-label="播放 讲师形象对照材料"><i>▶</i></span>
+        </div>
         <div class="body">
           <div class="title">实验刺激材料 · 讲师形象对照（两版）</div>
-          <div class="line">同一段讲课内容，两版<strong>只改「形象」一个变量</strong>：台词、机位、时长、灯光、背景、音量全部保持一致。</div>
-          <div class="meta"><span>实验材料</span><span>60 秒 ×2 版</span><span class="todo">职务待补</span><span class="todo">年份待补</span></div>
+          <div class="line">同一张脸、同一段讲稿、同一套光线与机位，两版<strong>只改「形象」一个变量</strong>——休闲（黑短袖）／正式（深色西装）。</div>
+          <div class="meta">
+            <span>实验材料</span><span>28 秒 · 含两版</span><span>概念 · 生成 · 剪辑合成：本人</span>
+            <span>平台：RunningHub</span><span>2026 年 9 月</span>
+          </div>
           <button class="more" type="button">看详情 ▾</button>
           <div class="detail">
-            <p>为眼动与脑电实验准备的对照材料：被试观看两版讲课视频，除“讲师形象”外一切变量受控，才能把生理数据的变化归因到形象本身。这是本岗位要求的核心能力。</p>
-            <p class="hint">交付物：两版成片 + 一份变量控制清单（逐项说明哪些保持一致）。</p>
-            <p class="hint">AI 来源：生图工具 待补 · 生视频工具 待补 · 操作路径 待补</p>
+            <p><strong>这是什么。</strong>为眼动仪与脑电（EEG）实验准备的对照材料：被试观看两版讲课视频，除「讲师形象」外，台词、语速、表情、机位、景别、光线、背景、音量全部保持一致，生理数据的变化才能归因到形象本身。这个岗位真正要的不是一支好看的片子，而是一批可控的材料。</p>
+            <p><strong>制作流程（六步）。</strong>① <strong>先生成人物</strong>：出一张男性讲师形象，并做成可复用的角色资产（面部特写／全身立绘／多视图）。② <strong>改变服装</strong>：在同一张脸上只换着装，做出休闲与正式两版，脸完全不动。③ <strong>控制变量</strong>：把两版的表情、姿态、视线、背景、光位、机位、景别、画幅逐项锁死，只留「服装」一个自变量。④ <strong>单独生成音频</strong>：讲稿文字交给文生音频，只生成一次，两版共用同一份。⑤ <strong>分别生成口播视频</strong>：两版各传人物图 + 同一份音频做图片对口型，口型与文字逐字对齐。⑥ <strong>生成空镜后剪辑</strong>：另出一段无人的讲义／桌面空镜（两版共用），最后在剪映里硬切拼接，转场卡与字幕两组同一套做法。</p>
+            <p><strong>为什么交给 AI 做。</strong>「形象」是这个实验唯一的自变量，所以一切可能被误读成“形象差别”的东西——脸、表情、光线、声音——都必须先变成常量。AI 在这里反而比实拍更适合做演示：同一个角色的同一张脸可以精确复用，换装不换脸；音频只生成一次、两版共用，连停顿和重音都不会有毫厘之差。</p>
+            <video controls preload="none" poster="assets/jiangshi-01.jpg" src="assets/jiangshi-01.mp4"></video>
+            <div class="duo single">
+              <figure><img src="assets/jiangshi-canvas.jpg" alt="RunningHub 画布：人物资产、音频与两版口播视频"><figcaption>RunningHub 画布：人物资产三件套 → 音频 → 两版口播视频 → 空镜（本人实际工作界面）</figcaption></figure>
+            </div>
+            <p class="hint">AI 来源：平台 RunningHub · 人物形象与换装（人物资产 · 形象设定）· 语音（文生音频，男声，仅生成一次）· 口播视频（图片对口型，两版共用同一份音频）· 剪辑合成：剪映。选题、变量控制方案与流程设计由本人完成。</p>
+            <p class="hint">说明：本件为 AI 生成的规范演示样片，用于验证规格标准与变量控制流程；正式实验材料须实拍并取得肖像授权。</p>
           </div>
         </div>
       </article>
@@ -240,16 +255,26 @@
       </article>
 
       <article class="card">
-        <div class="cover pending"><b>+</b><span>待制作 · ③ 油画变活 · 轨道穿梭</span></div>
+        <div class="cover">
+          <img src="assets/oil-01.jpg" alt="油画系列《婚礼签字》动态影像">
+          <span class="tag ghost">横屏</span>
+          <span class="play" role="button" tabindex="0" aria-label="播放 油画系列《婚礼签字》"><i>▶</i></span>
+        </div>
         <div class="body">
-          <div class="title">油画变活 · 动态轨道穿梭</div>
-          <div class="line">静态油画生成动态画面，并用摄像机轨道在画面内穿梭。</div>
-          <div class="meta"><span>AI 生成</span><span class="todo">时长待补</span><span class="todo">职务待补</span><span class="todo">AI 来源待补</span></div>
+          <div class="title">油画变活 ·《婚礼签字》</div>
+          <div class="line">让一幅 1920 年的公有领域油画在画面里活过来：笔触微微呼吸，镜头沿着画中人的视线在画内推移。</div>
+          <div class="meta">
+            <span>AI 动态影像</span><span>25 秒</span><span>生成 · 剪辑合成：本人</span>
+            <span>原作：莱顿 1920（公有领域）</span><span>2026 年 9 月</span>
+          </div>
           <button class="more" type="button">看详情 ▾</button>
           <div class="detail">
-            <p>技术路线：图生视频 + 摄像机路径动画（后期合成轨道运动），用于展示对 AI 生成结果的控制力，而不是“一键生成”。</p>
-            <p class="hint">规划中，待制作。</p>
-            <p class="hint">AI 来源：生图工具 待补 · 生视频工具 待补 · 操作路径 待补</p>
+            <p><strong>原作。</strong>《婚礼签字》The Wedding Register，埃德蒙·布莱尔·莱顿（Edmund Blair Leighton，1852–1922）1920 年作，布面油画。作者 1922 年去世，作品已进入公有领域，可自由使用。</p>
+            <p><strong>创作想法。</strong>选这幅画是因为它天生“在动”：新娘俯身签字的那一下、登记官低头的角度、窗格投进来的光，都指向一个正在发生的瞬间。所以不重画、不改编，只让这个瞬间继续下去——笔触呼吸、光影浮动，镜头再沿着画中人的视线慢慢推近。</p>
+            <p><strong>为什么不做“变形”。</strong>AI 复活油画的常见套路是让画面越变越离谱：加人物、换场景、风格漂移。这里反过来——把「禁止」写得比「要求」更死：不改构图、不加人物、不改画风、不出现文字与水印。要证明的是“能控制 AI”，不是“AI 能乱想”。</p>
+            <video controls preload="none" poster="assets/oil-01.jpg" src="assets/oil-01.mp4"></video>
+            <p class="hint">片尾黑幕注明原作信息（画名 · 作者 · 年份），让作品与原作共同呈现。</p>
+            <p class="hint">AI 来源：平台 RunningHub（图生视频）· 剪辑与片尾合成：剪映。原作《婚礼签字》为公有领域作品。</p>
           </div>
         </div>
       </article>
